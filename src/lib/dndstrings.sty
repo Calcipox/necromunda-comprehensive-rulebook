@@ -1,0 +1,65 @@
+% Define all strings as new macros instead of hardcoding them in the
+% TeX files. This then allows us to add captions for multilanguage support.
+\newcommand\armorclassname{Armor Class}
+\newcommand\hitpointsname{Hit Points}
+\newcommand\speedname{Speed}
+
+% DnD
+\newcommand\strstatname{STR}
+\newcommand\dexstatname{DEX}
+\newcommand\constatname{CON}
+\newcommand\intstatname{INT}
+\newcommand\wisstatname{WIS}
+\newcommand\chastatname{CHA}
+
+% Necromunda
+\newcommand\Mstatname{M}       % Move
+\newcommand\WSstatname{WS}     % Weapon Skill
+\newcommand\BSstatname{BS}     % Ballistic Skill
+\newcommand\Sstatname{S}       % Strength
+\newcommand\Tstatname{T}       % Toughness
+\newcommand\Wstatname{W}       % Wounds
+\newcommand\Istatname{I}       % Initiative
+\newcommand\Astatname{A}       % Attacks
+\newcommand\LDstatname{LD}     % Leadership
+\newcommand\Clstatname{Cl}     % Cool
+\newcommand\Willstatname{Will} % Will
+\newcommand\Intstatname{Int}   % Int
+
+
+\newcommand\skillsname{Skills}
+\newcommand\dimmname{Damage Immunities}
+\newcommand\dvulname{Damage Vulnerabilities}
+\newcommand\dresname{Damage Resistances}
+\newcommand\cimmname{Condition Immunities}
+\newcommand\savesname{Saving Throws}
+\newcommand\sensesname{Senses}
+\newcommand\languagesname{Languages}
+\newcommand\challengename{Challenge}
+
+\newcommand\ftname{ft.}
+\newcommand\meleeattackname{Melee Weapon Attack}
+\newcommand\rangedattackname{Ranged Weapon Attack}
+\newcommand\meleeorrangedattackname{Melee or Ranged Weapon Attack}
+\newcommand\tohitname{to hit}
+\newcommand\reachname{reach}
+\newcommand\rangename{range}
+\newcommand\hitname{Hit}
+\newcommand\damagename{damage}
+
+% Delay loading captions until after the user has imported a language package.
+% Enables using babel/polyglossia with the dndbook document class as well as the
+% dnd package.
+%
+% Both language packages use \AtBeginDocument. Use \AtEndPreamble (etoolbox)
+% instead to side-step load order issues.
+\AtEndPreamble{%
+  % Check if either babel or polyglossia have been loaded,
+  % in which case load the string captions
+  \@ifpackageloaded{babel}{
+    \usepackage{lib/dndstrings-captions}
+  }{}
+  \@ifpackageloaded{polyglossia}{
+    \usepackage{lib/dndstrings-captions}
+  }{}
+}
