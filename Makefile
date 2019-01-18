@@ -22,6 +22,9 @@ example:create_generated_folder
 create_generated_folder:
 	mkdir -p generated
 
+images:
+	cd src && TEXINPUTS=.src/lib//: pdflatex "\def\filename{sections/figures/gang-fighters-statBox.tex}\input{scripts/standaloneWrap}" && pdfcrop standaloneWrap.pdf && pdftoppm standaloneWrap-crop.pdf|pnmtopng > sections/images/gang-fighter-statBox.png && ls | grep standalone | grep -v .tex | xargs rm
+
 
 clean:
 	rm -f src/*.aux

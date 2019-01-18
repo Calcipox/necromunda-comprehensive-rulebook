@@ -2,7 +2,7 @@
 
 ## Compile
 
-Just run the command `make` to generate the Necromunda pdf
+Just run the command `make` to generate the Necromunda pdf (please run twice to update the TOC correctly)
 
 `make example` will generate an example pdf we dummy text 
 
